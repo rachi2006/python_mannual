@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload App</title>
+</head>
+<body>
+
+<h2>Upload File</h2>
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file"><br><br>
+    <button type="submit">Upload</button>
+</form>
+
+<h2>Download Files</h2>
+
+<ul>
+{% for file in files %}
+    <li>
+        {{file}} 
+        <a href="/download/{{file}}">Download</a>
+    </li>
+{% endfor %}
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AJAX Example</title>
+
+<script>
+function sendData() {
+
+    var name = document.getElementById("name").value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/getdata", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function() {
+        var response = JSON.parse(this.responseText);
+        document.getElementById("result").innerHTML = response.result;
+    };
+
+    xhr.send("name=" + name);
+}
+</script>
+
+</head>
+
+<body>
+
+<h2>AJAX Example</h2>
+
+<input type="text" id="name" placeholder="Enter your name">
+<button onclick="sendData()">Submit</button>
+
+<p id="result"></p>
+
+</body>
+</html>
